@@ -57,7 +57,7 @@
     <properties>
         <aerogear.version>1.4.0-SNAPSHOT</aerogear.version>
         <android.version>4.1.1.4</android.version>
-        <maven.android.plugin.verson>3.8.2</maven.android.plugin.verson>
+        <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
         <java.version>1.7</java.version>
         <maven.dependency.plugin.version>2.5.1</maven.dependency.plugin.version>
@@ -173,28 +173,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven.dependency.plugin.version}</version>
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>com.google.code.gson</groupId>
-                            <artifactId>gson</artifactId>
-                        </artifactItem>
-                        <artifactItem>
-                            <groupId>com.google.guava</groupId>
-                            <artifactId>guava</artifactId>
-                        </artifactItem>
-                        <artifactItem>
-                            <groupId>org.jboss.aerogear</groupId>
-                            <artifactId>aerogear-crypto</artifactId>
-                        </artifactItem>
-                    </artifactItems>
-                    <outputDirectory>${basedir}/libs</outputDirectory>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
