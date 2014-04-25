@@ -1,0 +1,12 @@
+{
+  "name": "javascript",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.0",
+    "aerogear": "~1.4.0"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "jquery": "2.0.x"
+  }
+}
