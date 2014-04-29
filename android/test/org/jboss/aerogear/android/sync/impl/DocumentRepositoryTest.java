@@ -39,8 +39,7 @@ public class DocumentRepositoryTest {
     public void testMerge() throws SynchronizationException {
         Document<String> document = new Document<String>("Test String");
         document.setId("1");
-        document.setRevision("2090111021");
-
+        
         repo.merge(document);
 
         assertEquals(document, store.read("1"));
@@ -54,12 +53,11 @@ public class DocumentRepositoryTest {
     public void testWontMergeCurrentRevision() throws SynchronizationException {
         Document<String> document = new Document<String>("Test String");
         document.setId("1");
-        document.setRevision("2090111021");
-
+        
         repo.canMerge(document);
         repo.merge(document);
         boolean result = repo.canMerge(document);
         Assert.assertFalse(result);
     }
-
+    
 }
