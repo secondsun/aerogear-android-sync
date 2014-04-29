@@ -6,6 +6,7 @@ import org.jboss.aerogear.android.sync.SynchronizationException;
 import org.jboss.aerogear.android.sync.document.Document;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +43,9 @@ public class DocumentRepositoryTest {
         
         repo.merge(document);
 
-        assertEquals(document, store.read("1"));
+        Document<String> storedDocument = store.read("1");
+        
+        assertNotEquals(document, storedDocument); //Merge should not change the local document.
         
     }
 
