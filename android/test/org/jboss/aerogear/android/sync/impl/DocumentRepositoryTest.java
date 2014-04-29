@@ -59,5 +59,17 @@ public class DocumentRepositoryTest {
         boolean result = repo.canMerge(document);
         Assert.assertFalse(result);
     }
+
+    /**
+     * Test that an trying to merge the same document twice will fail.
+     */
+    @Test
+    public void testCanMergeChildDocument() throws SynchronizationException {
+        Document<String> document = new Document<String>("Test String");
+        document.setId("1");
+        
+        repo.merge(document);
+        
+    }
     
 }
