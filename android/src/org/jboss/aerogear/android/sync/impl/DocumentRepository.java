@@ -37,7 +37,9 @@ public class DocumentRepository<T> implements Repository<Document<T>>{
 
     @Override
     public void merge(Document<T> remoteData) throws SynchronizationException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (canMerge(remoteData)) {
+            store.save(remoteData);
+        }
     }
 
     @Override
