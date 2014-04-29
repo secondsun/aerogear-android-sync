@@ -1,5 +1,6 @@
 package org.jboss.aerogear.android.sync.document;
 
+import org.jboss.aerogear.android.RecordId;
 import org.jboss.aerogear.android.sync.impl.DocumentRepository;
 
 /**
@@ -15,6 +16,7 @@ public class Document<T> {
     
     private final T content;
     
+    @RecordId
     private String id;
     private String revision;
     private String parentRevision;
