@@ -19,8 +19,15 @@ public class DocumentRepository<T> implements Repository<Document<T>>{
     }
     
     @Override
-    public boolean canMerge(Document<T> remoteData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean canMerge(Document<T> remoteDocument) {
+        Document localDocument = store.read(remoteDocument.getId());
+        if (localDocument == null) {
+            return true;
+        } else if (localDocument.getRevision().equals(remoteDocument.getParentRevision())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
