@@ -5,8 +5,10 @@ import org.jboss.aerogear.android.impl.datamanager.MemoryStorage;
 import org.jboss.aerogear.android.sync.SynchronizationException;
 import org.jboss.aerogear.android.sync.document.Document;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,12 +28,28 @@ public class DocumentRepositoryTest {
      */
     @Test
     public void testEmptyCanMerge() {
-        boolean result = repo.canMerge(new Document<String>("Test String"));
-        Assert.assertTrue(result);
+        
+        //null content
+        Assert.assertFalse(repo.canMerge(new Document(null)));
+        
+        
+        Document<String> doc = new Document<String>("Test String");
+        
+        //No revision and no Id
+        Assert.assertFalse(repo.canMerge(doc));
+        
+        //revision but no Id
+        doc.setRevision("Revision-1");
+        Assert.assertFalse(repo.canMerge(doc));
+        
+        doc.setId("1");
+        Assert.assertTrue(repo.canMerge(doc));
     }
 
     /**
      * Test merge
+     * 
+     * To be merged an Document has to have a id, content, and revision.
      *
      * @throws SynchronizationException if the merge fails. Which is won't since
      * this is a test
@@ -40,12 +58,13 @@ public class DocumentRepositoryTest {
     public void testMerge() throws SynchronizationException {
         Document<String> document = new Document<String>("Test String");
         document.setId("1");
+        document.setRevision("42");
         
         repo.merge(document);
 
         Document<String> storedDocument = store.read("1");
         
-        assertNotEquals(document, storedDocument); //Merge should not change the local document.
+        assertFalse(document == storedDocument); //Merge should not change the local document.
         
     }
 
@@ -56,23 +75,31 @@ public class DocumentRepositoryTest {
     public void testWontMergeCurrentRevision() throws SynchronizationException {
         Document<String> document = new Document<String>("Test String");
         document.setId("1");
+        document.setRevision("42");
         
-        repo.canMerge(document);
+        assertTrue(repo.canMerge(document));
         repo.merge(document);
-        boolean result = repo.canMerge(document);
-        Assert.assertFalse(result);
+        Assert.assertFalse(repo.canMerge(document));
     }
 
     /**
-     * Test that an trying to merge the same document twice will fail.
+     * Test that a merge with a proper parent/child will happen
      */
     @Test
     public void testCanMergeChildDocument() throws SynchronizationException {
         Document<String> document = new Document<String>("Test String");
         document.setId("1");
-        
+        document.setRevision("42");
+        repo.merge(document);
+        document.setParentRevision("42");
+        document.setRevision("420");
+        assertTrue(repo.canMerge(document));
         repo.merge(document);
         
+    }
+    
+    @Test
+    public void testSyncronizationException() {
     }
     
 }
