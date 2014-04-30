@@ -18,13 +18,15 @@ public class DocumentRepository<T> implements Repository<Document<T>> {
         this.store = store;
     }
 
-    @Override
     /**
      * In order to merge a document it must have an ID, a Revision, Content, and
      * the ParentRevision must match the Revision of the currently stored
      * document (if any)
      *
+     * {@inheritDoc}
+     * 
      */
+    @Override
     public boolean canMerge(Document<T> remoteDocument) {
 
         if (Strings.isNullOrEmpty(remoteDocument.getRevision())) {
