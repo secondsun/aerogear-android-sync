@@ -36,9 +36,10 @@ public class DocumentRepository<T> implements Repository<Document<T>>{
     }
 
     @Override
-    public void merge(Document<T> remoteData) throws SynchronizationException {
-        if (canMerge(remoteData)) {
-            store.save(remoteData);
+    public void merge(Document<T> remoteDocument) throws SynchronizationException {
+        if (canMerge(remoteDocument)) {
+            Document localDocument = store.read(remoteDocument.getId());
+            store.save(remoteDocument);
         }
     }
 
