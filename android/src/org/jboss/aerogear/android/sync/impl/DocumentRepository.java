@@ -52,11 +52,6 @@ public class DocumentRepository<T> implements Repository<Document<T>> {
     }
 
     @Override
-    public boolean hasChanges() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void merge(Document<T> remoteDocument) throws SynchronizationException {
         if (canMerge(remoteDocument)) {
             Document<T> copyDoc = new Document<T>(remoteDocument.getContent());
@@ -71,11 +66,6 @@ public class DocumentRepository<T> implements Repository<Document<T>> {
                 throw new SynchronizationException("Could not complete merge", store.read(remoteDocument.getId()), remoteDocument);
             }
         }
-    }
-
-    @Override
-    public Document<T> getDelta(Document<T> remoteData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
