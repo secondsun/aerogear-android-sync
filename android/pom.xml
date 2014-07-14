@@ -28,7 +28,7 @@
     <parent>
         <groupId>org.jboss.aerogear</groupId>
         <artifactId>aerogear-parent</artifactId>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
     </parent>
 
     <licenses>
@@ -55,7 +55,7 @@
     </scm>
 
     <properties>
-        <aerogear.version>1.4.0-SNAPSHOT</aerogear.version>
+        <aerogear.version>1.4.0</aerogear.version>
         <android.version>4.1.1.4</android.version>
         <maven.android.plugin.verson>3.8.0</maven.android.plugin.verson>
         <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
