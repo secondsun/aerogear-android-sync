@@ -54,6 +54,13 @@
         <tag>HEAD</tag>
     </scm>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>saga-snapshot</id>
+            <url>https://sagaoftherealms.net/nexus-latest/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <aerogear.version>1.4.0</aerogear.version>
         <android.version>4.1.1.4</android.version>
