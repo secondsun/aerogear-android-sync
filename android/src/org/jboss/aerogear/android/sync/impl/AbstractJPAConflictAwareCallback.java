@@ -13,7 +13,6 @@ import org.jboss.aerogear.android.Callback;
 import org.jboss.aerogear.android.http.HeaderAndBody;
 import org.jboss.aerogear.android.http.HttpException;
 import org.jboss.aerogear.android.impl.pipeline.GsonResponseParser;
-import org.jboss.aerogear.android.pipeline.ResponseParser;
 import org.jboss.aerogear.android.sync.document.JPADocument;
 
 /**
