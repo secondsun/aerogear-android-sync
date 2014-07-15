@@ -90,6 +90,7 @@
             <groupId>com.google.android</groupId>
             <artifactId>annotations</artifactId>
             <version>${android.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -104,6 +105,7 @@
             <groupId>org.jboss.aerogear</groupId>
             <artifactId>aerogear-android</artifactId>
             <version>${aerogear.version}</version>
+            <scope>provided</scope>
             <type>apklib</type>
         </dependency>
         <dependency>
